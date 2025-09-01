@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Versión del modelo POM -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Identificación del proyecto -->
+    <groupId>com.devsenior.tutorias.luistriana</groupId>    <!-- Identificador del grupo o empresa -->
+    <artifactId>leector-de-archivos</artifactId>    <!-- Nombre del proyecto o módulo -->
+    <version>1.0-SNAPSHOT</version>    <!-- Versión del proyecto (SNAPSHOT indica que está en desarrollo) -->
+
+    <!-- Configuración de propiedades del proyecto -->
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>        <!-- Versión de Java utilizada para compilar -->
+        <maven.compiler.target>21</maven.compiler.target>        <!-- Versión de Java objetivo para la compilación -->
+        <slf4j.version>2.0.13</slf4j.version>        <!-- Versión de SLF4J (API de logs) -->
+        <log4j.version>2.23.1</log4j.version>        <!-- Versión de Log4j (implementación de logs) -->
+    </properties>
+
+    <!-- Gestión de dependencias -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Dependencia de SLF4J (API de logs) -->
+            <dependency>
+                <groupId>org.slf4j</groupId>                <!-- Grupo de la dependencia -->
+                <artifactId>slf4j-api</artifactId>                <!-- Nombre del artefacto -->
+                <version>${slf4j.version}</version>                <!-- Versión definida en las propiedades -->
+            </dependency>
+
+            <!-- Dependencia de Log4j API -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>                <!-- Versión definida en las propiedades -->
+            </dependency>
+
+            <!-- Dependencia de Log4j Core -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>                <!-- Versión definida en las propiedades -->
+            </dependency>
+
+            
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j2-impl</artifactId>
+                <version>${log4j.version}</version>                <!-- Versión definida en las propiedades -->
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    
+    <dependencies>
+       
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j2-impl</artifactId>
+        </dependency>
+    </dependencies>
+</project>
