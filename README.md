@@ -13,7 +13,8 @@ Este repositorio contiene varios proyectos de Java que demuestran diferentes con
 │   └── practica-basica-junit5
 ├── modulo 4
 │   ├── clase2-set-list
-│   └── gestion-asientos-de-teatro
+│   ├── gestion-asientos-de-teatro
+│   └── melodi-music-tutoria
 ├── .gitignore
 └── README.md
 ```
@@ -63,7 +64,7 @@ Este proyecto contiene ejemplos de pruebas unitarias utilizando JUnit 5.
 
 ### `modulo 4`
 
-Este módulo se enfoca en estructuras de datos en Java y su aplicación en un proyecto práctico.
+Este módulo se enfoca en el manejo de colecciones en Java, incluyendo `List`, `Set` y `Map`. A través de varios proyectos, se exploran las características y usos de estas estructuras de datos.
 
 #### 1. `clase2-set-list`
 
@@ -83,6 +84,18 @@ Este es un proyecto práctico que simula la gestión de asientos en un teatro, a
   - **`model/`**: Clases que modelan los asientos y sus estados.
   - **`service/Teatro.java`**: Lógica de negocio para la gestión del teatro.
   - **`Menu.java`**: Clase para la interacción con el usuario a través de un menú de consola.
+  - **`Main.java`**: Clase principal que ejecuta la aplicación.
+
+#### 3. `melodi-music-tutoria`
+
+Este proyecto simula una biblioteca de música donde los usuarios pueden gestionar canciones y playlists.
+
+- **`src/main/java/com/devsenior/tutorias/luistriana/`**: Contiene el código fuente de la aplicación.
+  - **`model/`**: Clases que modelan las canciones, playlists y usuarios.
+    - `Canciones.java`
+    - `Playlists.java`
+    - `Usuarios.java`
+  - **`service/bibliotecaMusical.java`**: Lógica de negocio para la gestión de la biblioteca musical.
   - **`Main.java`**: Clase principal que ejecuta la aplicación.
 
 ## Archivos Adicionales
