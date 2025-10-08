@@ -1,4 +1,3 @@
-
 # Mapa del Repositorio
 
 Este repositorio contiene varios proyectos de Java que demuestran diferentes conceptos y características del lenguaje.
@@ -12,9 +11,16 @@ Este repositorio contiene varios proyectos de Java que demuestran diferentes con
 │   ├── manejo de logs
 │   └── practica-basica-junit5
 ├── modulo 4
-│   ├── clase2-set-list
-│   ├── gestion-asientos-de-teatro
-│   └── melodi-music-tutoria
+│   ├── clase 1
+│   │   └── gestion-asientos-de-teatro
+│   ├── clase 2
+│   │   └── clase2-set-list
+│   ├── clase 3
+│   │   └── melodi-music-tutoria
+│   ├── clase 4
+│   │   └── gestionpedidos
+│   └── semana-de-refuerzo
+│       └── refuerzo-estructuras
 ├── .gitignore
 └── README.md
 ```
@@ -66,16 +72,7 @@ Este proyecto contiene ejemplos de pruebas unitarias utilizando JUnit 5.
 
 Este módulo se enfoca en el manejo de colecciones en Java, incluyendo `List`, `Set` y `Map`. A través de varios proyectos, se exploran las características y usos de estas estructuras de datos.
 
-#### 1. `clase2-set-list`
-
-Este proyecto contiene ejemplos y ejercicios sobre el uso de las interfaces `Set` y `List` en Java, y sus implementaciones (`ArrayList`, `LinkedList`, `HashSet`, `LinkedHashSet`, `TreeSet`).
-
-- **`src/main/java/com/devsenior/luistriana/`**: Contiene el código fuente.
-  - **`ejerciciosbasicos/`**: Implementaciones de ejemplo para varias estructuras de datos.
-  - **`List/`**: Ejercicios específicos para `List`.
-  - **`set/`**: Ejercicios específicos for `Set`.
-
-#### 2. `gestion-asientos-de-teatro`
+#### 1. `clase 1/gestion-asientos-de-teatro`
 
 Este es un proyecto práctico que simula la gestión de asientos en un teatro, aplicando conceptos de manejo de excepciones y estructuras de datos.
 
@@ -86,7 +83,16 @@ Este es un proyecto práctico que simula la gestión de asientos en un teatro, a
   - **`Menu.java`**: Clase para la interacción con el usuario a través de un menú de consola.
   - **`Main.java`**: Clase principal que ejecuta la aplicación.
 
-#### 3. `melodi-music-tutoria`
+#### 2. `clase 2/clase2-set-list`
+
+Este proyecto contiene ejemplos y ejercicios sobre el uso de las interfaces `Set` y `List` en Java, y sus implementaciones (`ArrayList`, `LinkedList`, `HashSet`, `LinkedHashSet`, `TreeSet`).
+
+- **`src/main/java/com/devsenior/luistriana/`**: Contiene el código fuente.
+  - **`ejerciciosbasicos/`**: Implementaciones de ejemplo para varias estructuras de datos.
+  - **`List/`**: Ejercicios específicos para `List`.
+  - **`set/`**: Ejercicios específicos for `Set`.
+
+#### 3. `clase 3/melodi-music-tutoria`
 
 Este proyecto simula una biblioteca de música donde los usuarios pueden gestionar canciones y playlists.
 
@@ -97,6 +103,24 @@ Este proyecto simula una biblioteca de música donde los usuarios pueden gestion
     - `Usuarios.java`
   - **`service/bibliotecaMusical.java`**: Lógica de negocio para la gestión de la biblioteca musical.
   - **`Main.java`**: Clase principal que ejecuta la aplicación.
+
+#### 4. `clase 4/gestionpedidos`
+
+Este proyecto es una aplicación de consola para gestionar pedidos. Permite agregar, eliminar, actualizar y buscar pedidos.
+
+- **`src/main/java/com/devsenior/luistriana/`**: Contiene el código fuente de la aplicación.
+    - **`model/`**: Clases que modelan los pedidos y las ciudades.
+        - `Pedido.java`
+        - `City.java`
+    - **`service/Entrega.java`**: Lógica de negocio para la gestión de entregas.
+    - **`Main.java`**: Clase principal que ejecuta la aplicación.
+
+#### 5. `semana-de-refuerzo/refuerzo-estructuras`
+
+Este proyecto contiene material de referencia y ejemplos sobre las principales estructuras de datos en Java.
+
+- **`tablaMetodos.md`**: Un archivo markdown con tablas que resumen los métodos más comunes de `Arrays`, `Lists`, `Sets`, `Maps`, `Stacks` y `Queues`.
+- **`src/main/java/com/devsenior/luistriana/`**: Contiene ejemplos de código para cada estructura de datos.
 
 ## Archivos Adicionales
 
