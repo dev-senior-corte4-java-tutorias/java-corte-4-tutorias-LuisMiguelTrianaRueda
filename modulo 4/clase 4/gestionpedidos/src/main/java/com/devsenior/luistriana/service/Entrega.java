@@ -1,13 +1,16 @@
 package com.devsenior.luistriana.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import com.devsenior.luistriana.model.City;
+import com.devsenior.luistriana.model.EstadoPedido;
 import com.devsenior.luistriana.model.Pedido;
 
 public class Entrega {
@@ -75,6 +78,66 @@ public class Entrega {
         }
     }
 
+    // == metodos nuevos para los nuevos atributos ==
+
+    public void actualizarEstadoPedido(String pedidoId, EstadoPedido nuevoEstado, String estacion) {
+        if (pedidos.containsKey(pedidoId)) {
+            Pedido pedido = pedidos.get(pedidoId);
+
+            pedido.setEstado(nuevoEstado);
+
+            pedido.agregarRegistroHistorial(
+                    "el pedido paso por la estacion" + estacion + " con estado " + nuevoEstado.name());
+
+        }
+    }
+
+    public void procesarDevolucionPedido(String pedidoId) {
+        if (pedidos.containsKey(pedidoId)) {
+
+            Pedido pedido = pedidos.get(pedidoId);
+            if (pedido.isDevuelto()) {
+                System.out.println(" este pedido ya fue devuelto ");
+                return;
+            }
+
+            if (pedido.getEstado() == EstadoPedido.ENTREGADO || pedido.getEstado() == EstadoPedido.EN_REPARTO) {
+                if (LocalDate.now().isAfter(pedido.getFechaMaximaDeReclamo())) {
+                    System.out.println(" error: la fecha maxima para reclarmar o devolver el pedido ha expirado");
+                    return;
+                }
+                // si esta dentro del rango de la fecha establecido para este producto entonces
+                // ejecute el proceso de devolucion
+                pedido.setDevuelto(true);
+                pedido.setEstado(EstadoPedido.EN_DEVOLUCION);
+                pedido.agregarRegistroHistorial(" se ha iniciado el proceso de devolucion");
+                System.out.println(" el pedido " + pedidoId + " ha sido marcado para devolucion");
+            } else {
+                System.out.println(" no se puede devolver el pedido que ya esta en reparto o fue entregado");
+            }
+
+        }
+
+        else {
+
+            System.out.println(" el pedido con este id" + pedidoId + " no se encontro");
+        }
+    }
+
+    // ver el historial de un solo pedido
+
+    public void verHistorialPedido(String pedidoId) {
+        verPedido(pedidoId).ifPresent(pedido -> {
+            System.out.println("historial del pedido " + pedidoId + " ---");
+            System.out.println(" estado actual" + pedido.getEstado().getDescripcion());
+            pedido.getHistorialEstaciones().forEach(registro -> System.out.println("-" + registro));
+            System.out.println(" ------------------------------------------------ ");
+        }
+
+        );
+
+    }
+
     // metodo para filtrar los pedidos que van a una ciudad especifica
 
     public List<Pedido> verPedidosPorCiudad(String nombreCiudad) {
@@ -118,6 +181,26 @@ public class Entrega {
 
         return pedidos.values().stream().anyMatch(
                 pedido -> pedido.getComprador().equalsIgnoreCase(nombreComprador));
+    }
+
+    public List<Pedido> filtrarPedidosPorEstado(EstadoPedido estado) {
+        return pedidos.values().stream()
+                .filter(pedido -> pedido.getEstado() == estado)
+                .collect(Collectors.toList());
+    }
+
+    public List<Pedido> obeterPedidosPorVencer() {
+
+        LocalDate fechaLimite = LocalDate.now().plusDays(3);
+        return pedidos.values().stream().filter(pedido -> pedido.getEstado() != EstadoPedido.ENTREGADO)
+                .filter(pedido -> !pedido.getFechaMaximaDeReclamo().isAfter(fechaLimite))
+                .collect(Collectors.toList());
+
+    }
+
+    public Map<Boolean, List<Pedido>> agruparPedidosPorDevolucion() {
+        return pedidos.values().stream().collect(Collectors.partitioningBy(pedido -> pedido.isDevuelto()));
+
     }
 
 }
