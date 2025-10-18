@@ -1,0 +1,24 @@
+### peticion 1 dar bienvenida al usuario 
+
+GET http://localHost:8080/menu/bienvenida?nombre=victor
+
+### peticion 2 introduccion a spring boot
+GET http://localHost:8080/menu/introduccion
+
+### peticion 3 ver un concepto 
+
+GET http://localHost:8080/menu/concepto/bean
+
+### peticion 4 ver starter
+
+GET http://localHost:8080/menu/starter/web
+
+### peticion 5 agregar comentario a starter
+
+POST http://localHost:8080/menu/starter/comentario
+Content-Type: application/json
+
+{
+"starter": "web",
+"comentario":"excelente"
+}
