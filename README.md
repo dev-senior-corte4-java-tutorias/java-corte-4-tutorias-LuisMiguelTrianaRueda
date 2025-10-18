@@ -21,6 +21,9 @@ Este repositorio contiene varios proyectos de Java que demuestran diferentes con
 │   │   └── gestionpedidos
 │   └── semana-de-refuerzo
 │       └── refuerzo-estructuras
+├── modulo 5
+│   └── Clase1
+│       └── tutoria1documentacion
 ├── .gitignore
 └── README.md
 ```
@@ -121,6 +124,44 @@ Este proyecto contiene material de referencia y ejemplos sobre las principales e
 
 - **`tablaMetodos.md`**: Un archivo markdown con tablas que resumen los métodos más comunes de `Arrays`, `Lists`, `Sets`, `Maps`, `Stacks` y `Queues`.
 - **`src/main/java/com/devsenior/luistriana/`**: Contiene ejemplos de código para cada estructura de datos.
+
+### `modulo 5`
+
+Este módulo introduce el desarrollo de aplicaciones web con **Spring Boot**, explorando conceptos fundamentales de este framework para construir APIs REST y servicios web empresariales.
+
+#### 1. `Clase1/tutoria1documentacion`
+
+Este es un proyecto inicial de Spring Boot que implementa un menú de documentación interactivo a través de endpoints REST. El proyecto demuestra conceptos básicos de Spring Boot como inyección de dependencias, controladores REST, y servicios.
+
+- **Tecnologías utilizadas**:
+  - Spring Boot 3.5.6
+  - Java 21
+  - Spring Web (para crear APIs REST)
+  - Spring DevTools (para desarrollo)
+
+- **`src/main/java/com/devsenior/luistriana/tutoria1documentacion/`**: Contiene el código fuente de la aplicación.
+  - **`controller/menuController.java`**: Controlador REST que expone endpoints para interactuar con el menú de documentación.
+    - `GET /menu/bienvenida`: Endpoint de bienvenida personalizado con parámetros.
+    - `GET /menu/introduccion`: Retorna una introducción a Spring Boot.
+    - `GET /menu/concepto/{concepto}`: Explica conceptos clave (IOC, Bean, MVC, REST).
+    - `GET /menu/starter/{starter}`: Información sobre starters de Spring Boot.
+    - `POST /menu/starter/comentario`: Permite agregar comentarios sobre starters.
+  - **`service/MenuService.java`**: Capa de servicio con la lógica de negocio que gestiona:
+    - Saludos de bienvenida personalizados
+    - Explicaciones de conceptos de Spring Boot (IoC, Beans, MVC, REST)
+    - Información sobre Spring Boot Starters (web, devtools)
+    - Sistema de comentarios por starter
+    - Glosario de términos de Spring Boot
+  - **`Tutoria1documentacionApplication.java`**: Clase principal que inicia la aplicación Spring Boot.
+
+**Conceptos aprendidos**:
+- Estructura básica de un proyecto Spring Boot
+- Patrón MVC en Spring
+- Anotaciones: `@RestController`, `@Service`, `@GetMapping`, `@PostMapping`, `@PathVariable`, `@RequestParam`, `@RequestBody`, `@Autowired`
+- Inyección de dependencias
+- Creación de APIs REST
+- Manejo de parámetros de ruta y query
+- Procesamiento de datos JSON
 
 ## Archivos Adicionales
 
