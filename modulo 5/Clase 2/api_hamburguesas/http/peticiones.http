@@ -1,0 +1,34 @@
+### variables 
+@baseUrl = http://localhost:8080/api/pedido
+
+### crear un pedido 
+POST {{baseUrl}}/nuevopedido
+Content-Type : application/json
+
+{
+    "id": "PED-001",
+    "cliente": "juan perez",
+    "tipoPedido": "hamburguesa clasica",
+    "direccion": "cll 123 #54-67",
+    "horaPedido":"21:28",
+    "atendido": false
+}
+
+### ver todos los pedidos 
+GET {{baseUrl}}/pedidos
+
+### actualizar pedido completo 
+PUT {{baseUrl}}/actualizar/pedido/PED-001
+Content-Type : application/json
+
+{
+    "id": "PED-001",
+    "cliente": "juan perez",
+    "tipoPedido": "hamburguesa clasica",
+    "direccion": "465 # 78-02",
+    "horaPedido":"21:28",
+    "atendido": false
+}
+
+### ver todos los pedidos
+GET {{baseUrl}}/pedidos
