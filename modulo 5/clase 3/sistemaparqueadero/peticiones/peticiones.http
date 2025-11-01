@@ -1,0 +1,55 @@
+### variables 
+@baseUrl = http://localhost:8080/api/parqueadero
+
+### registrar el primer carro
+POST {{baseUrl}}/carro
+Content-Type: application/json
+
+{
+"placa": "abc123",
+"marca": "toyota",
+"modelo": " corolla",
+"tiempoDePago": 2.0
+
+}
+
+### registrar el segundo carro
+POST {{baseUrl}}/carro
+Content-Type: application/json
+
+{
+"placa": "def456",
+"tiempoDePago": 1.0
+}
+
+### registrar un tercer carro
+POST {{baseUrl}}/carro
+Content-Type: application/json
+
+{
+    "placa" : "ghi789",
+    "tiempoDePago": 1.0
+}
+
+### ver todos los carros
+
+GET {{baseUrl}}/vercarros
+
+### actualizar el tiempo del primer carro
+PATCH {{baseUrl}}/carro/abc123
+Content-Type: application/json
+
+{
+"placa": "abc123",
+"tiempoDePago": 3.0
+
+}
+
+### calcular el pago para el primer carro
+GET {{baseUrl}}/carro/tiempo/abc123
+
+### eliminar el primer carro 
+DELETE {{baseUrl}}/carro/abc123
+
+### verificar que el carro si haya sido eliminado 
+GET {{baseUrl}}/vercarros
