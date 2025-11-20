@@ -22,8 +22,14 @@ Este repositorio contiene varios proyectos de Java que demuestran diferentes con
 │   └── semana-de-refuerzo
 │       └── refuerzo-estructuras
 ├── modulo 5
-│   └── Clase1
-│       └── tutoria1documentacion
+│   ├── Clase1
+│   │   └── tutoria1documentacion
+│   ├── Clase 2
+│   │   └── api_hamburguesas
+│   ├── clase 3
+│   │   └── sistemaparqueadero
+│   └── clase 4
+│       └── gestion-usuarios
 ├── .gitignore
 └── README.md
 ```
@@ -162,6 +168,141 @@ Este es un proyecto inicial de Spring Boot que implementa un menú de documentac
 - Creación de APIs REST
 - Manejo de parámetros de ruta y query
 - Procesamiento de datos JSON
+
+#### 2. `Clase 2/api_hamburguesas`
+
+API REST desarrollada con Spring Boot para gestionar pedidos de una hamburguesería. Este proyecto implementa un CRUD completo para pedidos utilizando las mejores prácticas de Spring Boot.
+
+- **Tecnologías utilizadas**:
+  - Spring Boot 3.5.7
+  - Java 21
+  - Spring Web
+  - Spring DevTools
+  - Maven
+
+- **`src/main/java/com/devsenior/luistriana/api_hamburguesas/`**: Contiene el código fuente de la aplicación.
+  - **`controller/PedidoController.java`**: Controlador REST con endpoints para gestionar pedidos.
+    - `GET /api/pedido/pedidos`: Ver todos los pedidos
+    - `GET /api/pedido/pedido/{id}`: Ver un pedido específico por ID
+    - `POST /api/pedido/nuevopedido`: Crear un nuevo pedido
+    - `PUT /api/pedido/actualizar/pedido/{id}`: Actualizar completamente un pedido
+    - `PATCH /api/pedido/pedido/{id}`: Actualizar parcialmente un pedido
+    - `DELETE /api/pedido/pedido/{id}`: Eliminar un pedido
+  - **`model/Pedido.java`**: Modelo de datos que representa un pedido con los campos:
+    - `id`: Identificador único del pedido
+    - `cliente`: Nombre del cliente
+    - `tipoPedido`: Tipo de hamburguesa o producto
+    - `direccion`: Dirección de entrega
+    - `atendido`: Estado del pedido (Boolean)
+    - `horaPedido`: Hora en que se realizó el pedido
+  - **`service/`**: Capa de lógica de negocio
+    - `ServicePedido.java`: Interfaz del servicio
+    - `ServicePedidoImpl.java`: Implementación del servicio con la lógica de negocio
+  - **`ApiHamburguesasApplication.java`**: Clase principal de la aplicación.
+
+**Conceptos aprendidos**:
+- CRUD completo con Spring Boot
+- Diferencia entre `@PutMapping` (actualización completa) y `@PatchMapping` (actualización parcial)
+- Uso de `@Component` en modelos
+- Implementación de `equals()` y `hashCode()` para comparación de objetos
+- Uso de `HashSet` para almacenamiento en memoria
+- Java Beans vs POJO
+
+#### 3. `clase 3/sistemaparqueadero`
+
+Sistema de gestión de parqueadero desarrollado con Spring Boot que permite administrar vehículos, registrar tiempos de permanencia y calcular pagos automáticamente.
+
+- **Tecnologías utilizadas**:
+  - Spring Boot 3.5.7
+  - Java 21
+  - Spring Web
+  - Spring DevTools
+  - Maven
+
+- **`src/main/java/com/devsenior/luistriana/sistemaparqueadero/`**: Contiene el código fuente de la aplicación.
+  - **`controller/ParqueaderoController.java`**: Controlador REST que expone endpoints para:
+    - `GET /api/parqueadero/vercarros`: Obtener todos los vehículos registrados
+    - `POST /api/parqueadero/carro`: Registrar un nuevo vehículo
+    - `DELETE /api/parqueadero/carro/{placa}`: Eliminar un vehículo por placa
+    - `PATCH /api/parqueadero/carro/{placa}`: Actualizar tiempo de uso
+    - `GET /api/parqueadero/carro/tiempo/{placa}`: Calcular pago del vehículo
+  - **`model/Carro.java`**: Modelo que representa un vehículo con:
+    - `placa`: Identificador único (String)
+    - `tiempoDePago`: Horas de uso (Double)
+  - **`service/`**: Capa de lógica de negocio
+    - `ServiceParqueadero.java`: Interfaz del servicio
+    - `ParqueaderoImpl.java`: Implementación con lógica de cálculo de tarifas
+  - **`SistemaparqueaderoApplication.java`**: Clase principal de la aplicación.
+
+**Características técnicas**:
+- Tarifa: $4,000 COP por hora
+- Utiliza `HashSet` para almacenar vehículos (sin duplicados por placa)
+- Implementación de `equals()` y `hashCode()` basados en la placa
+- Manejo de excepciones con mensajes personalizados
+- Validación de placas existentes antes de operaciones
+- Cálculo automático de tarifas basado en tiempo de permanencia
+
+**Conceptos aprendidos**:
+- Manejo de operaciones matemáticas en servicios
+- Uso de `Map` para respuestas estructuradas en JSON
+- Validación de datos de entrada
+- Manejo de excepciones personalizadas
+- Uso de tipos primitivos y wrapper classes (Double)
+
+#### 4. `clase 4/gestion-usuarios`
+
+API REST completa para gestión de usuarios con control de acceso basado en roles. Este proyecto implementa un sistema robusto de gestión de usuarios con diferentes niveles de permisos, validaciones robustas y documentación automática con Swagger.
+
+- **Tecnologías utilizadas**:
+  - Spring Boot 3.5.7
+  - Java 21
+  - Spring Web
+  - Spring Boot DevTools
+  - Spring Validation (Jakarta Validation)
+  - SpringDoc OpenAPI 2.6.0 (Swagger)
+  - Maven
+
+- **`src/main/java/com/devsenior/luistriana/gestion_usuarios/`**: Contiene el código fuente de la aplicación.
+  - **`controller/UsuariosController.java`**: Controlador REST con endpoints completos:
+    - `POST /api/usuarios`: Crear usuario (Solo ADMINISTRADOR)
+    - `GET /api/usuarios`: Ver todos los usuarios (Solo ADMINISTRADOR)
+    - `GET /api/usuarios/{id}`: Ver usuario por ID (Solo ADMINISTRADOR)
+    - `PUT /api/usuarios/{id}`: Actualizar usuario (Solo ADMINISTRADOR)
+    - `PUT /api/usuarios/mi-perfil/{id}`: Actualizar propio perfil (ESTANDAR)
+    - `DELETE /api/usuarios/{id}`: Eliminar usuario (Solo ADMINISTRADOR)
+  - **`model/`**: Modelos de datos
+    - `Usuario.java`: Entidad con campos validados (id, nombreUsuario, nombreCompleto, contraseña, rol)
+    - `RolUsuario.java`: Enum con roles (ADMINISTRADOR, ESTANDAR)
+  - **`service/`**: Capa de lógica de negocio
+    - `UsuarioService.java`: Interfaz del servicio
+    - `UsuarioServiceImpl.java`: Implementación con validaciones de seguridad
+  - **`config/openApiConfiguration.java`**: Configuración de Swagger/OpenAPI para documentación interactiva
+  - **`GestionUsuariosApplication.java`**: Clase principal de la aplicación.
+
+**Validaciones implementadas**:
+- `@NotBlank`: Campos no pueden estar vacíos
+- `@NotNull`: Campos obligatorios
+- `@Positive`: Valores numéricos positivos
+- Validación de roles mediante enum
+- Validación de permisos según rol del usuario
+
+**Características de seguridad**:
+- Control de acceso basado en roles
+- Métodos `validarEsAdmin()` y `validarEsMismoUsuario()`
+- Auto-actualización de perfil para usuarios estándar
+- Gestión de contraseñas con requisitos mínimos (10 caracteres)
+
+**Conceptos aprendidos**:
+- Control de acceso basado en roles (RBAC)
+- Jakarta Validation para validación de datos
+- Documentación de APIs con Swagger/OpenAPI
+- Patrones de arquitectura en capas
+- Auto boxing y unboxing en Java
+- Stream API para búsqueda y filtrado
+- Uso de `HashSet` como almacenamiento en memoria
+- Manejo de excepciones personalizadas
+- Inyección de dependencias por constructor
+- Documentación interactiva accesible en `/swagger-ui.html`
 
 ## Archivos Adicionales
 
